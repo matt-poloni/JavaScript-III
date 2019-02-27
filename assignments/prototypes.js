@@ -153,7 +153,7 @@ Hero.prototype.attack = function(opponent=blackKnight) {
     console.log(`Our hero, ${this.name}, failed to inflict damage upon ${opponent.name}`)
   }
 }
-Villain.prototype.devastate = function(opponent=arthur,setVal) {
+Villain.prototype.devastate = function(opponent=arthur) {
   console.log(`Our villain, ${this.name}, uses ${this.weapons[
     Math.floor(Math.random()*this.weapons.length)
   ]} on ${opponent.name}.`);
@@ -201,7 +201,7 @@ const blackKnight = new Villain({
     'Sword',
     'His Boot',
     'His Own Blood',
-    'Whats Coming to You'
+    "'Whats Coming to You'",
   ],
   language: 'Loony',
 });
