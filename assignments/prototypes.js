@@ -65,72 +65,149 @@ Humanoid.prototype.greet = function() {
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 
-  const mage = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 1,
-      height: 1,
-    },
-    healthPoints: 5,
-    name: 'Bruce',
-    team: 'Mage Guild',
-    weapons: [
-      'Staff of Shamalama',
-    ],
-    language: 'Common Tongue',
-  });
+const mage = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 1,
+    height: 1,
+  },
+  healthPoints: 5,
+  name: 'Bruce',
+  team: 'Mage Guild',
+  weapons: [
+    'Staff of Shamalama',
+  ],
+  language: 'Common Tongue',
+});
 
-  const swordsman = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 2,
-      height: 2,
-    },
-    healthPoints: 15,
-    name: 'Sir Mustachio',
-    team: 'The Round Table',
-    weapons: [
-      'Giant Sword',
-      'Shield',
-    ],
-    language: 'Common Tongue',
-  });
+const swordsman = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 2,
+  },
+  healthPoints: 15,
+  name: 'Sir Mustachio',
+  team: 'The Round Table',
+  weapons: [
+    'Giant Sword',
+    'Shield',
+  ],
+  language: 'Common Tongue',
+});
 
-  const archer = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 1,
-      width: 2,
-      height: 4,
-    },
-    healthPoints: 10,
-    name: 'Lilith',
-    team: 'Forest Kingdom',
-    weapons: [
-      'Bow',
-      'Dagger',
-    ],
-    language: 'Elvish',
-  });
+const archer = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4,
+  },
+  healthPoints: 10,
+  name: 'Lilith',
+  team: 'Forest Kingdom',
+  weapons: [
+    'Bow',
+    'Dagger',
+  ],
+  language: 'Elvish',
+});
 
-  console.log(mage.createdAt); // Today's date
-  console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-  console.log(swordsman.healthPoints); // 15
-  console.log(mage.name); // Bruce
-  console.log(swordsman.team); // The Round Table
-  console.log(mage.weapons); // Staff of Shamalama
-  console.log(archer.language); // Elvish
-  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  console.log(mage.takeDamage()); // Bruce took damage.
-  console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+console.log(mage.createdAt); // Today's date
+console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+console.log(swordsman.healthPoints); // 15
+console.log(mage.name); // Bruce
+console.log(swordsman.team); // The Round Table
+console.log(mage.weapons); // Staff of Shamalama
+console.log(archer.language); // Elvish
+console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+console.log(mage.takeDamage()); // Bruce took damage.
+console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
-
+function Hero(attr) {
+  Humanoid.call(this, attr);
+}
+Villain.prototype = Object.create(Humanoid.prototype);
+function Villain(attr) {
+  Humanoid.call(this, attr);
+}
+Hero.prototype = Object.create(Humanoid.prototype);
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
-
+Hero.prototype.attack = function(opponent=blackKnight) {
+  console.log(`Our hero, ${this.name}, uses ${this.weapons[
+    Math.floor(Math.random()*this.weapons.length)
+  ]} on ${opponent.name}.`);
+  let diceRoll = Math.floor(Math.random()*20);
+  if (diceRoll > 0) {
+    opponent.healthPoints -= diceRoll;
+    console.log(opponent.takeDamage());
+    if (opponent.healthPoints <= 0) {
+      console.log(opponent.destroy());
+    }
+  } else {
+    console.log(`Our hero, ${this.name}, failed to inflict damage upon ${opponent.name}`)
+  }
+}
+Villain.prototype.devastate = function(opponent=arthur,setVal) {
+  console.log(`Our villain, ${this.name}, uses ${this.weapons[
+    Math.floor(Math.random()*this.weapons.length)
+  ]} on ${opponent.name}.`);
+  let diceRoll = Math.floor(Math.random()*20);
+  if (diceRoll > 0) {
+    opponent.healthPoints -= diceRoll;
+    console.log(opponent.takeDamage());
+    if (opponent.healthPoints <= 0) {
+      console.log(opponent.destroy());
+    }
+  } else {
+    console.log(`Our villain, ${this.name}, failed to inflict damage upon ${opponent.name}`)
+  }
+}
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
-  
+  const arthur = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 3,
+    },
+    healthPoints: 20,
+    name: 'King Arthur',
+    team: 'Knights of the Round Table',
+    weapons: [
+      'Coconuts',
+      'Excalibur',
+      'Violence Inherent in the System',
+      'Holy Hand Grenade of Antioch',
+    ],
+    language: 'English',
+  });
+  const blackKnight = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 1,
+      height: 4,
+    },
+    healthPoints: 100,
+    name: 'Black Knight',
+    team: 'Black Knight',
+    weapons: [
+      'Sword',
+      'His Boot',
+      'His Own Blood',
+      'Whats Coming to You'
+    ],
+    language: 'Loony',
+  });
+
+  // FIGHT!!!
+  console.log(arthur.greet());
+  console.log(blackKnight.greet());
+  arthur.attack(blackKnight);
+  blackKnight.devastate(arthur);
