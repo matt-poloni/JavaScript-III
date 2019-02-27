@@ -66,7 +66,6 @@ Humanoid.prototype.greet = function() {
 
 
 const mage = new Humanoid({
-  createdAt: new Date(),
   dimensions: {
     length: 2,
     width: 1,
@@ -82,7 +81,6 @@ const mage = new Humanoid({
 });
 
 const swordsman = new Humanoid({
-  createdAt: new Date(),
   dimensions: {
     length: 2,
     width: 2,
@@ -99,7 +97,6 @@ const swordsman = new Humanoid({
 });
 
 const archer = new Humanoid({
-  createdAt: new Date(),
   dimensions: {
     length: 1,
     width: 2,
@@ -170,7 +167,6 @@ Villain.prototype.devastate = function(opponent=arthur) {
 }
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
 const arthur = new Hero({
-  createdAt: new Date(),
   dimensions: {
     length: 2,
     width: 2,
@@ -188,7 +184,6 @@ const arthur = new Hero({
   language: 'English',
 });
 const blackKnight = new Villain({
-  createdAt: new Date(),
   dimensions: {
     length: 1,
     width: 1,
