@@ -201,6 +201,7 @@ const blackKnight = new Villain({
     'Sword',
     'His Boot',
     'His Own Blood',
+    'His Own Severed Arm',
     "'Whats Coming to You'",
   ],
   language: 'Loony',
