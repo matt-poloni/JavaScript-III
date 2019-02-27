@@ -200,7 +200,7 @@ const blackKnight = new Villain({
   weapons: [
     'Sword',
     'His Boot',
-    'His Own Blood',
+    'Flesh Wound',
     'His Own Severed Arm',
     "'Whats Coming to You'",
   ],
