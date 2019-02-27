@@ -169,45 +169,45 @@ Villain.prototype.devastate = function(opponent=arthur,setVal) {
   }
 }
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
-  const arthur = new Hero({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 2,
-      height: 3,
-    },
-    healthPoints: 20,
-    name: 'King Arthur',
-    team: 'Knights of the Round Table',
-    weapons: [
-      'Coconuts',
-      'Excalibur',
-      'Violence Inherent in the System',
-      'Holy Hand Grenade of Antioch',
-    ],
-    language: 'English',
-  });
-  const blackKnight = new Villain({
-    createdAt: new Date(),
-    dimensions: {
-      length: 1,
-      width: 1,
-      height: 4,
-    },
-    healthPoints: 100,
-    name: 'Black Knight',
-    team: 'Black Knight',
-    weapons: [
-      'Sword',
-      'His Boot',
-      'His Own Blood',
-      'Whats Coming to You'
-    ],
-    language: 'Loony',
-  });
+const arthur = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 3,
+  },
+  healthPoints: 20,
+  name: 'King Arthur',
+  team: 'Knights of the Round Table',
+  weapons: [
+    'Coconuts',
+    'Excalibur',
+    'Violence Inherent in the System',
+    'Holy Hand Grenade of Antioch',
+  ],
+  language: 'English',
+});
+const blackKnight = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 1,
+    height: 4,
+  },
+  healthPoints: 100,
+  name: 'Black Knight',
+  team: 'Black Knight',
+  weapons: [
+    'Sword',
+    'His Boot',
+    'His Own Blood',
+    'Whats Coming to You'
+  ],
+  language: 'Loony',
+});
 
-  // FIGHT!!!
-  console.log(arthur.greet());
-  console.log(blackKnight.greet());
-  arthur.attack(blackKnight);
-  blackKnight.devastate(arthur);
+// FIGHT!!!
+console.log(arthur.greet());
+console.log(blackKnight.greet());
+arthur.attack(blackKnight);
+blackKnight.devastate(arthur);
